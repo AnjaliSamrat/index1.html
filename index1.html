@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR and Calorie Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group-inline .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-group-inline .form-group:last-child {
+            margin-right: 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .message {
+            text-align: center;
+            color: red;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMR and Calorie Calculator</h1>
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pre_meal">Pre-Meal:</label>
+                <input type="text" id="pre_meal" name="pre_meal" required>
+            </div>
+            <div class="form-group">
+                <label for="diseases">Diseases:</label>
+                <select id="diseases" name="diseases" multiple>
+                    <option value="diabetes">Diabetes</option>
+                    <option value="hypertension">Hypertension</option>
+                    <option value="heart_disease">Heart Disease</option>
+                    <!-- Add other diseases as needed -->
+                </select>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+</body>
+</html>
